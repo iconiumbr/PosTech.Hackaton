@@ -26,7 +26,7 @@ namespace Application.UseCases.Users.GetForgotPasswordEmail
 
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             token.Replace("+", " ");
-            var link = new Uri($"https://localhost:7492/change-password/{user.Email}/{token}");
+            var link = new Uri($"https://localhost:7171/change-password/{user.Email}/{token}");
 
             var html = @$"<h1> Hackaton </h1>
                           <h5> Confirme seu e-mail</h5>

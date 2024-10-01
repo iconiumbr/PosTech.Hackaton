@@ -53,7 +53,7 @@ namespace Application.UseCases.Users.AddUser
 
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-            var link = _urlHelper.Action("ConfirmEmail", "Account", new { email = user.Email, token }, "https", "localhost:7482");
+            var link = _urlHelper.Action("ConfirmEmail", "Account", new { email = user.Email, token }, "https", "localhost:7171");
 
             var html = @$"<h1> Hackaton </h1>
                           <h5> Confirme seu e-mail</h5>
