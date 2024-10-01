@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 
-namespace LimpoExpress.Email
+namespace Email
 {
     public class EmailSender : IEmailSender
     {
@@ -34,8 +34,8 @@ namespace LimpoExpress.Email
                 await smtp.SendMailAsync(message);
 
             }
-            catch (Exception ex) 
-            { 
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.ToString());
             }
         }

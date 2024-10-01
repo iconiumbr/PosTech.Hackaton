@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LimpoExpress.Email
+namespace Email
 {
     public static class DependencyInjection
     {
