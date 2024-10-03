@@ -39,12 +39,17 @@ jobs:
     needs: ci    
 
     steps:
-      - name: Checkout code
+      - name: 1 - Checkout code
         uses: actions/checkout@v3
       
-      - name: login to docker registry
+      - name: 2 - login to docker registry
         uses: docker/login-action@v3
         with:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: ${{secrets.DOCKERHUB_TOKEN}}      
-        
+
+      - name: 3 - build and push docker image to registry
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: iconiumbr/hackaton:latest
