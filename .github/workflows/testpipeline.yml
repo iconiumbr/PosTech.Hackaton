@@ -47,4 +47,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: iconiumbr/hackato:latest
+          tags: iconiumbr/hackaton:latest
