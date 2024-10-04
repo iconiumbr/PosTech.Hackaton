@@ -6,10 +6,10 @@ namespace Email
 {
     public class EmailSender : IEmailSender
     {
-        public string SmtpServer = "";
-        public int SmtpPort = 0;
-        public string SmtpUser = "";
-        public string SmtpPassword = "";
+        public string SmtpServer = "smtp.mailersend.net";
+        public int SmtpPort = 587;
+        public string SmtpUser = "MS_Kb0mLf@trial-yzkq340dn60ld796.mlsender.net";
+        public string SmtpPassword = "unkurEczsUpjUv9z";
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {

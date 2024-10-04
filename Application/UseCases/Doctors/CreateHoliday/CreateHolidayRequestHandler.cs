@@ -39,16 +39,16 @@ namespace Application.UseCases.Doctors.CreateHoliday
             }
 
             var user = await _userManager.FindByEmailAsync(_user.Email);
-            var carWashes = await _repositoryDoctor.SearchAsync(x => x.Email == user.Email);
-            var carWashId = carWashes.FirstOrDefault().Id;
+            var doctors = await _repositoryDoctor.SearchAsync(x => x.Email == user.Email);
+            var doctorId = doctors.FirstOrDefault().Id;
 
-            var carWash = await _repositoryDoctor.GetByIdAsync(carWashId);
-            if (carWash == null)
+            var doctor = await _repositoryDoctor.GetByIdAsync(doctorId);
+            if (doctor == null)
             {
                 _notificator.AddNotification("NotFound");
                 return;
             }
-            await _repositoryHoliday.AddAsync(request.MapToHoliday(carWash));
+            await _repositoryHoliday.AddAsync(request.MapToHoliday(doctor));
         }
     }
 }

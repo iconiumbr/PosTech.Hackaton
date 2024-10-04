@@ -26,10 +26,10 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAvailability(int carWashId, int carWashService,
+        public async Task<IActionResult> GetAvailability(int doctorId, int doctorService,
             DateTime date)
         {
-            var availability = await _availabilityQueries.GetAvailabilityAsync(carWashId, carWashService, date, date);
+            var availability = await _availabilityQueries.GetAvailabilityAsync(doctorId, doctorService, date, date);
             return CustomResponse(availability);
         }
 
@@ -40,14 +40,13 @@ namespace Api.Controllers
             return CustomResponse(appointments);
         }
 
-        [HttpGet("car-wash")]
-        [Authorize(Roles = "CarWash")]
-        public async Task<IActionResult> GetCarWashAppointmentsAsync()
+        [HttpGet("doctor-appointment")]
+        [Authorize(Roles = "Doctor")]
+        public async Task<IActionResult> GetDoctorAppointmentsAsync()
         {
             var appointments = await _appointmentsQueries.DoctorAppointments();
             return CustomResponse(appointments);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> AddAppointment(CreateAppointmentRequest createAppointmentRequest)
