@@ -54,14 +54,14 @@ namespace Application.UseCases.Appointments.CreateAppointment
                 return 0;
             }
 
-            var carWashService = await _repositoryDoctor.GetServiceByIdAsync(request.ServiceId);
-            if (carWashService == null)
+            var doctorService = await _repositoryDoctor.GetServiceByIdAsync(request.ServiceId);
+            if (doctorService == null)
             {
                 _notificator.AddNotification("NotFound");
                 return 0;
             }
 
-            if (_availabilityQueries.ScheduledTime(doctor, request.Date, carWashService.Duration))
+            if (_availabilityQueries.ScheduledTime(doctor, request.Date, doctorService.Duration))
             {
                 _notificator.AddNotification("There is already a schedule for this time.");
                 return 0;
@@ -69,7 +69,7 @@ namespace Application.UseCases.Appointments.CreateAppointment
 
             var user = await _userManager.FindByIdAsync(_user.Id);
 
-            var appointment = new Appointment(user.PhoneNumber, doctor, carWashService, request.Date, AppointmentStatus.Scheduled);
+            var appointment = new Appointment(user.PhoneNumber, doctor, doctorService, request.Date, AppointmentStatus.Scheduled);
             await _repositoryAppointment.AddAsync(appointment);
 
 

@@ -13,15 +13,15 @@ namespace Application.Queries
     {
         private readonly IRepositoryDoctor _repositoryDoctor;
 
-        public AvailabilityQueries(IRepositoryDoctor repositoryCarWash)
+        public AvailabilityQueries(IRepositoryDoctor repositorydoctor)
         {
-            _repositoryDoctor = repositoryCarWash;
+            _repositoryDoctor = repositorydoctor;
         }
 
-        public async Task<IEnumerable<DateTime>> GetAvailabilityAsync(int carWashId, int carWashServiceId, DateTime startDate, DateTime endDate)
+        public async Task<IEnumerable<DateTime>> GetAvailabilityAsync(int doctorId, int doctorServiceId, DateTime startDate, DateTime endDate)
         {
-            var doctor = await _repositoryDoctor.GetWithAllRelations(carWashId);
-            var service = await _repositoryDoctor.GetServiceByIdAsync(carWashServiceId);
+            var doctor = await _repositoryDoctor.GetWithAllRelations(doctorId);
+            var service = await _repositoryDoctor.GetServiceByIdAsync(doctorServiceId);
             var letterDurationService = doctor.Services.OrderBy(x => x.Duration).FirstOrDefault();
 
             var availability = new List<DateTime>();

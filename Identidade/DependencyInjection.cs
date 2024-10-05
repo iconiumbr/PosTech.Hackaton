@@ -47,7 +47,7 @@ namespace Identidade
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidAudience = "*",
-                    ValidIssuer = "LIMPOEXPRESS"
+                    ValidIssuer = "HACKATON"
                 };
             });
 
